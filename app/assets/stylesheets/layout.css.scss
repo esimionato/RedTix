@@ -1,0 +1,23 @@
+hgroup {
+  margin-bottom: 40px;
+}
+
+#content {
+  margin: 0 auto;
+  width: 960px;
+}
+
+a.action-button {
+  @include border-radius(10px);
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  text-decoration: none;
+
+  &.primary-action-button {
+    background-color: green;
+    color: white;
+  }
+
+}
