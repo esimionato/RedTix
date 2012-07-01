@@ -11,6 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120701194402) do
+
+  create_table "organizations", :force => true do |t|
+    t.string   "name",                     :null => false
+    t.string   "subdomain",  :limit => 50, :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "organizations", ["subdomain"], :name => "index_organizations_on_subdomain", :unique => true
 
 end
