@@ -11,3 +11,17 @@ group :assets do
   gem 'therubyracer', :platform => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'shoulda'
+  gem 'timecop'
+end
