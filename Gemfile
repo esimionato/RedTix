@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bourbon'
 gem 'haml'
 gem 'jquery-rails'
 gem 'pg'
