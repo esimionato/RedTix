@@ -15,4 +15,15 @@ describe Organization do
               with_options(null: false) }
 
   it { should have_db_index(:subdomain).unique(true) }
+
+  allowed_mass_assigns = [ :name, :subdomain ]
+  disallowed_mass_assigns = [ :created_at, :updated_at ]
+
+  allowed_mass_assigns.each do |mass|
+    it { should allow_mass_assignment_of(mass) }
+  end
+
+  disallowed_mass_assigns.each do |mass|
+    it { should_not allow_mass_assignment_of(mass) }
+  end
 end
