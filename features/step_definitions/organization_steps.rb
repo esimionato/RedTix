@@ -9,6 +9,12 @@ When /^I enter valid details$/ do
   click_button('Create Your Organization!')
 end
 
-Then /^I should see a successful organization creation$/ do
+When /^I enter invalid details$/ do
+  click_button('Create Your Organization!')
+end
 
+Then /^I should see a successful organization creation$/ do
+  within('#flash .success') do
+    page.should have_content('Organization created successfully. Check your email for further information')
+  end
 end

@@ -5,8 +5,11 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(params[:organization])
-    @organization.save
-
-    redirect_to(root_path)
+    if @organization.save
+      flash[:success] = 'Organization created successfully. Check your email for further information'
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 end

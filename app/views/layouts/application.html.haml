@@ -6,5 +6,9 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
+    - if flash.present?
+      #flash
+        - flash.each do |type, msg|
+          %div{class: type}= msg
     #content
       = yield

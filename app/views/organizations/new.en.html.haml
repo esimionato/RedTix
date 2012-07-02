@@ -1,8 +1,9 @@
 = form_for @organization, url: organization_path do |f|
+  = render 'shared/error_messages', target: @organization
   .form-row
     = f.label :name
     = f.text_field :name
   .form-row
     = f.label :subdomain
     = f.text_field :subdomain
-  = f.submit('Create Your Organization!')
+  = f.submit 'Create Your Organization!'
