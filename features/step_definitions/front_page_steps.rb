@@ -21,6 +21,6 @@ Then /^I should see the shiny button to create a company$/ do
 end
 
 Then /^I should be on the landing page$/ do
-    pending # express the regexp above with the code you wish you had
+  current_path.should == root_path
 end
 

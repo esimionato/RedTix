@@ -10,4 +10,5 @@ When /^I enter valid details$/ do
 end
 
 Then /^I should see a successful organization creation$/ do
+
 end
