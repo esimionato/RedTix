@@ -53,4 +53,10 @@ describe Organization do
     it { should validate_format_of(:subdomain).
                 not_with(sub) }
   end
+
+  excluded_subdomains = %W[ www admin ]
+
+  excluded_subdomains.each do |sub|
+    it { should_not allow_value(sub).for(:subdomain) }
+  end
 end
