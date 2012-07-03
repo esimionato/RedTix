@@ -1,4 +1,4 @@
-Capybara.default_driver = :selenium
+Capybara.default_driver = :webkit
 pow_config = "#{Rails.root}/.powenv"
 pow_config_stash = "#{Rails.root}/.powenv_original"
 
