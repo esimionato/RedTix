@@ -1,4 +1,6 @@
-class OrganizationsController < ApplicationController
+class OrganizationsController < OrganizationBaseController
+  skip_before_filter :load_organization, only: [:new, :create]
+
   def new
     @organization = Organization.new
   end
@@ -11,5 +13,9 @@ class OrganizationsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @organization = Organization.find_by_subdomain!(request.subdomain)
   end
 end

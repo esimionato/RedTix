@@ -1,3 +1,9 @@
+Given /^there is an Organization$/ do
+  Organization.all.should be_empty
+
+  FactoryGirl.create(:organization)
+end
+
 When /^I click on the shiny button to create my Organization$/ do
   find("a[rel='new-organization']").click
 end
@@ -13,8 +19,44 @@ When /^I enter invalid details$/ do
   click_button('Create Your Organization!')
 end
 
+When /^I visit the Organization's dashboard$/ do
+  Organization.count.should == 1
+
+  Capybara.default_host = "#{Organization.first.subdomain}.redtix.dev"
+  Capybara.app_host = "http://#{Organization.first.subdomain}.redtix.dev"
+end
+
+When /^I visit a subdomain that does not yet exist$/ do
+  Organization.find_by_subdomain('non-existent').should be_nil
+
+  Capybara.default_host = 'non-existent.redtix.dev'
+  Capybara.app_host = 'http://non-existent.redtix.dev'
+
+  visit root_path
+end
+
 Then /^I should see a successful organization creation$/ do
   within('#flash .success') do
     page.should have_content('Organization created successfully. Check your email for further information')
+  end
+end
+
+Then /^I should be at the Organization signup page$/ do
+  current_path.should == new_organization_path
+end
+
+Then /^I should see the subdomain already filled in for me$/ do
+    pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see a message that says that subdomain is available$/ do
+    pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see the Organization's information$/ do
+  Organization.count.should == 1
+
+  within('#content h1') do
+    page.should have_content(Organization.first.name)
   end
 end
