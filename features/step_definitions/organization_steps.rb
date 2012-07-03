@@ -22,17 +22,13 @@ end
 When /^I visit the Organization's dashboard$/ do
   Organization.count.should == 1
 
-  Capybara.default_host = "#{Organization.first.subdomain}.redtix.dev"
-  Capybara.app_host = "http://#{Organization.first.subdomain}.redtix.dev"
+  visit_with_subdomain(Organization.first.subdomain, root_path)
 end
 
 When /^I visit a subdomain that does not yet exist$/ do
   Organization.find_by_subdomain('non-existent').should be_nil
 
-  Capybara.default_host = 'non-existent.redtix.dev'
-  Capybara.app_host = 'http://non-existent.redtix.dev'
-
-  visit root_path
+  visit_with_subdomain('non-existent', root_path)
 end
 
 Then /^I should see a successful organization creation$/ do
