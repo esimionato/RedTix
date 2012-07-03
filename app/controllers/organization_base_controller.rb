@@ -10,6 +10,7 @@ class OrganizationBaseController < ApplicationController
 
   def store_subdomain_and_redirect_to_new_organization
     session[:available_subdomain] = request.subdomain
+    flash[:notice] = 'You visited a non-existent subdomain. It is available for your use if you wish to signup'
     redirect_to new_organization_url(subdomain: 'www') and return
   end
 end

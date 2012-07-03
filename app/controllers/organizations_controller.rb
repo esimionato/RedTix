@@ -3,6 +3,7 @@ class OrganizationsController < OrganizationBaseController
 
   def new
     @organization = Organization.new
+    @organization.subdomain = session[:available_subdomain] if session[:available_subdomain].present?
   end
 
   def create

@@ -42,11 +42,13 @@ Then /^I should be at the Organization signup page$/ do
 end
 
 Then /^I should see the subdomain already filled in for me$/ do
-    pending # express the regexp above with the code you wish you had
+  find('#organization_subdomain').value.should == 'non-existent'
 end
 
 Then /^I should see a message that says that subdomain is available$/ do
-    pending # express the regexp above with the code you wish you had
+  within('#flash .notice') do
+    page.should have_content('You visited a non-existent subdomain. It is available for your use if you wish to signup')
+  end
 end
 
 Then /^I should see the Organization's information$/ do
