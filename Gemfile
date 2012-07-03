@@ -4,7 +4,7 @@ gem 'bourbon'
 gem 'haml'
 gem 'jquery-rails'
 gem 'pg'
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.6'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
