@@ -7,6 +7,7 @@ gem 'pg'
 gem 'rails', '3.2.6'
 
 group :assets do
+  gem 'bootstrap-sass'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'therubyracer', :platform => :ruby
