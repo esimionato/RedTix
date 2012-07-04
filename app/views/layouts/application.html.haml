@@ -1,9 +1,10 @@
 !!!
-%html
+%html{ class: 'no-js' }
   %head
     %title RedTix
     = stylesheet_link_tag    'application'
-    = javascript_include_tag 'application'
+    = render 'layouts/ie_shim'
+    = javascript_include_tag 'head'
     = csrf_meta_tags
   %body
     - if flash.present?
@@ -12,3 +13,4 @@
           %div{class: type}= msg
     #container
       = yield
+    = javascript_include_tag 'body'
