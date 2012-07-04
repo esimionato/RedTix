@@ -1,16 +1,12 @@
 !!!
 %html{ class: 'no-js' }
   %head
-    %title RedTix
-    = stylesheet_link_tag    'application'
-    = render 'layouts/ie_shim'
-    = javascript_include_tag 'head'
-    = csrf_meta_tags
+    = render 'layouts/head'
   %body
     - if flash.present?
       #flash
         - flash.each do |type, msg|
           %div{class: type}= msg
-    #container
+    .container
       = yield
-    = javascript_include_tag 'body'
+    = render 'layouts/footer'
